@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} {{user.id}} {% endblock %}
+{% block content %}
+<!--  -->
+<h1 class="title">{{user.first_name}} {{user.last_name}}</h1>
+<ul>
+    <li>id: {{user.id}}</li>
+    <li>name: {{user.first_name}} {{user.last_name}}</li>
+</ul>
+<blockquote>
+    <p>{{user.greet()}}</p>
+</blockquote>
+<form>
+    <button formaction="/users" formmethod="get">home</button>
+    <button formaction="/users/{{ user.id }}/edit" formmethod="get">Edit
+    </button>
+    <button formaction="/users/{{ user.id }}/delete" formmethod="post">Delete
+    </button>
+    <button formaction="/users/{{user.id}}/posts/new" formmethod="get"> new post </button>
+    <!-- <a href="/{{user.id}}/posts/new"> add post</a> -->
+</form>
+<ul>
+    {% for post in user.posts %}
+    <li>
+        <a href="/posts/{{post.id}}">
+            <b>{{post.title}}</b>
+        </a>
+        <small>{{post.date_time}}</small>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

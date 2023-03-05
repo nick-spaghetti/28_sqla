@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}tag: {{tag.id}}{% endblock %}
+{% block content %}
+<!--  -->
+<!-- <div id="content"> -->
+<h1 class="title">{{tag.name}}</h1>
+<ul>
+    <li>id: {{tag.id}}</li>
+    <li>name: {{tag.name}}</li>
+</ul>
+
+<form>
+    <button formaction="/tags" formmethod="get">back</button>
+    <button formaction="/tags/{{tag.id}}/edit" formmethod="get">edit</button>
+    <button formaction="/tags/{{tag.id}}/delete" formmethod="post">delete</button>
+    <button formaction="/homepage" formmethod="get">home</button>
+</form>
+<!-- </div> -->
+{% endblock %}
